@@ -1,3 +1,0 @@
-https://github.com/freeCodeCamp/freeCodeCamp
-https://github.com/getify/You-Dont-Know-JS
-https://github.com/trekhleb/javascript-algorithms

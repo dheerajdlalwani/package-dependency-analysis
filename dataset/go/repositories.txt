@@ -1,3 +1,0 @@
-https://github.com/istio/istio
-https://github.com/micro/micro
-https://github.com/gravitational/teleport
