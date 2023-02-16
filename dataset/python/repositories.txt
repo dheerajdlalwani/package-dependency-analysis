@@ -1,3 +1,0 @@
-https://github.com/TheAlgorithms/Python
-https://github.com/nvbn/thefuck
-https://github.com/3b1b/manim

@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "octokit": "^2.0.14"
+    "dotenv": "^16.0.3"
   }
 }
