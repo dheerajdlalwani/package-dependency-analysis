@@ -1,8 +1,10 @@
 const dotenv = require("dotenv");
+const fs = require("fs");
+const path = require("path");
 
 dotenv.config({ path: "../.env" })
 
-const languages = ["go", "python"];
+const languages = ["javascript", "go", "python"];
 
 const scraper = async () => {
     for (const language of languages) {
@@ -19,6 +21,8 @@ const scraper = async () => {
         );
 
         const { items } = await response.json();
+
+        // console.log(items);
 
         for(const item of items) {
             const base_url = item.url;
@@ -61,11 +65,20 @@ const scraper = async () => {
 
                 const text = await response.text();
 
-                console.log(`The ${file_name} for repository ${item.full_name} is\n`);
-                console.log(text);
+                // console.log(`The ${file_name} for repository ${item.full_name} is\n`);
+                // console.log(text);
+
+                const repo_dir = path.resolve(__dirname, `../dataset/${language}/${item.name}`);
+
+                if(!fs.existsSync(repo_dir))
+                    fs.mkdirSync(repo_dir, {recursive: true});
+                
+                fs.writeFileSync(`${repo_dir}/${file_name}`, text);
             }
 
-            console.log("====================================================================");
+            // console.log("====================================================================");
+
+
         }
     }
 }
