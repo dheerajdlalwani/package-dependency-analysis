@@ -1,7 +1,0 @@
-{
-  "name": "web-dev-for-beginners",
-  "version": "1.0.0",
-  "devDependencies": {
-    "docsify-to-pdf": "0.0.5"
-  }
-}
