@@ -39,13 +39,23 @@ const getSpecifiedDependencies = (file, which = "dependency") => {
 };
 
 const dfs = (file, fileName) => {
+  const ogFile = file;
   file = file["packages"];
   const expression = `^node_modules\/.*?${fileName}$`;
   const regEx = new RegExp(expression, "gm");
-  console.log(regEx);
   const fileKeys = Object.keys(file).filter((val) => regEx.test(val));
   if (!adjacencyList[fileName]) {
     adjacencyList[fileName] = new Array();
+  }
+  for(let key of fileKeys) {
+    if(!file[key] || !file[key]["dependencies"]) break;
+    let keyContent = Object.keys(file[key]["dependencies"]);
+    for(let content of keyContent) {
+      if(typeof adjacencyList[fileName] === 'object' && !adjacencyList[fileName].includes(content)) {
+        adjacencyList[fileName].push(content);
+        dfs(ogFile, content);
+      }
+    }
   }
   return;
 };
@@ -65,13 +75,25 @@ const getAdjacencyList = (baseDir) => {
     ];
 
     for (let dependency of adjacencyList[key]) {
-      let indirectDependencies = dfs(file, dependency);
-      adjacencyList["temp"] = indirectDependencies;
-      break;
+      dfs(file, dependency);
     }
-    break;
+
   }
+
 };
 
+const getTemp = () => {
+  let keys = Object.keys(adjacencyList);
+  for(let key of keys) {
+    let edges = adjacencyList[key];
+    for(let edge of edges) {
+      temp += `${key}>${edge}\n`;
+    }
+  }
+}
+
+let temp = "";
 getAdjacencyList(baseDir);
-console.log(adjacencyList);
+getTemp()
+console.log(temp)
+
