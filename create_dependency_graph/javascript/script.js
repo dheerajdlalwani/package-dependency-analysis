@@ -70,17 +70,16 @@ const getAdjacencyMap = (baseDir) => {
     adjacencyMap[key] = new Array();
     const file = files[key];
     const dependencyList = getSpecifiedDependencies(file);
-    const devDependencyList = getSpecifiedDependencies(file, "dev");
+    // const devDependencyList = getSpecifiedDependencies(file, "dev");
     adjacencyMap[key] = [
       ...adjacencyMap[key],
       ...dependencyList,
-      ...devDependencyList,
+      // ...devDependencyList,
     ];
 
     for (let dependency of adjacencyMap[key]) {
       dfs(file, dependency);
     }
-    break;
   }
 };
 
