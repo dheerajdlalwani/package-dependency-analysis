@@ -138,8 +138,16 @@ function calculateMetrics(issueOrPrs) {
 }
 
 async function main() {
+  let packageName = process.argv[2];
+  if (!packageName) {
+    console.error(
+      `error: expected package name as parameter, got: ${packageName}`
+    );
+    return;
+  }
+
   let { issueMetrics, prMetrics, ...analysis } = await getRecommendations(
-    "vue"
+    packageName
   );
   console.table(analysis);
   console.log();

@@ -94,6 +94,16 @@ function calculateMetrics(issueOrPrs) {
 }
 
 async function main() {
+  let packageName = process.argv[2];
+  if (!packageName) {
+    console.error(
+      `error: expected package name as parameter, got: ${packageName}`
+    );
+    return;
+  }
+
+  console.log(`analyzing package ${packageName}:`);
+
   let { topIssueAndPr, ...analysis } = await getCompetitorAnalysis("vue");
   console.table(analysis);
   console.table(topIssueAndPr);
