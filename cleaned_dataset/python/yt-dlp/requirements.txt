@@ -1,0 +1,6 @@
+mutagen
+pycryptodomex
+websockets
+brotli
+brotlicffi
+certifi

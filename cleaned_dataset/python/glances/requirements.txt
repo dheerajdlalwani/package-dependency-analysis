@@ -1,0 +1,8 @@
+psutil>=5.6.7
+defusedxml
+packaging
+future
+ujson<3
+ujson<4
+ujson<5
+ujson>=5.4.0

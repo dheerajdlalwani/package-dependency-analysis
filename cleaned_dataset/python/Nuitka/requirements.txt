@@ -1,0 +1,8 @@
+appdirs
+tqdm
+ordered-set
+orderedset
+subprocess32
+zstandard >= 0.15
+pyyaml
+Jinja2 >= 2.10.2

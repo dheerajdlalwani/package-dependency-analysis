@@ -1,0 +1,7 @@
+setuptools<50.0.0   
+altgraph
+pyinstaller-hooks-contrib >= 2020.11
+pefile
+pywin32-ctypes
+macholib
+importlib-metadata 

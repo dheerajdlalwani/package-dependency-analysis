@@ -1,0 +1,37 @@
+{
+  "name": "@mojs/core",
+  "version": "1.4.0",
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/plugin-transform-runtime": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "@mojs/player": "^1.0.1",
+    "babel-loader": "^9.1.2",
+    "coffee-loader": "^4.0.0",
+    "coffeeify": "^3.0.1",
+    "coffeescript": "^2.7.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^8.35.0",
+    "eslint-webpack-plugin": "^4.0.0",
+    "jasmine": "^4.5.0",
+    "karma": "^6.4.1",
+    "karma-babel-preprocessor": "^8.0.2",
+    "karma-browserstack-launcher": "^1.6.0",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-cli": "^2.0.0",
+    "karma-coffee-preprocessor": "^1.0.1",
+    "karma-coverage": "^2.2.0",
+    "karma-jasmine": "^5.1.0",
+    "karma-summary-reporter": "^3.1.1",
+    "puppeteer": "^19.7.2",
+    "terser-webpack-plugin": "^5.3.6",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.21.0",
+    "stylelint-webpack-plugin": "^4.1.0"
+  }
+}

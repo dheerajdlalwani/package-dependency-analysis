@@ -1,0 +1,21 @@
+{
+  "name": "wtfjs",
+  "version": "1.22.8",
+  "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "doctoc": "^2.1.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.6.2",
+    "semantic-release": "^19.0.2"
+  },
+  "dependencies": {
+    "boxen": "^7.0.0",
+    "chalk": "^5.0.1",
+    "default-pager": "^1.1.0",
+    "meow": "^10.1.4",
+    "msee": "^0.3.3",
+    "through2": "^4.0.2",
+    "update-notifier": "^6.0.2"
+  }
+}

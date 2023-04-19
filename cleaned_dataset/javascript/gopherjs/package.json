@@ -1,0 +1,9 @@
+{
+  "name": "gopherjs",
+  "devDependencies": {
+    "uglify-es": "^3.3.9"
+  },
+  "dependencies": {
+    "source-map-support": "^0.5.19"
+  }
+}
