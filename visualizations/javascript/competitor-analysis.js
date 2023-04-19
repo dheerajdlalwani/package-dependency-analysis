@@ -1,4 +1,4 @@
-// const fetch = require("node-fetch");
+const fetch = require("node-fetch");
 async function apiRequest(url, options = {}) {
   return fetch(url, options).then((r) => r.json());
 }
@@ -52,11 +52,14 @@ async function getCompetitorAnalysis(packageName) {
     openIssueCount: issues.length,
     openPrCount: prs.length,
     netIssueReactions: issueMetrics.reactions,
-    mostUpvotedIssue: issueMetrics.mostUpvoted,
-    mostUpvotedIssueCount: issueMetrics.mostUpvotedCount,
     netPrReactions: prMetrics.reactions,
-    mostUpvotedPr: prMetrics.mostUpvoted,
-    mostUpvotedPrCount: prMetrics.mostUpvotedCount,
+
+    topIssueAndPr: {
+      mostUpvotedIssue: issueMetrics.mostUpvoted,
+      mostUpvotedIssueCount: issueMetrics.mostUpvotedCount,
+      mostUpvotedPr: prMetrics.mostUpvoted,
+      mostUpvotedPrCount: prMetrics.mostUpvotedCount,
+    },
   };
 }
 
@@ -64,7 +67,7 @@ function calculateMetrics(issueOrPrs) {
   let totalReactions = {};
   let mostUpvoted = null;
   let mostUpvotedCount = 0;
-  for (let { title, reactions } of issueOrPrs) {
+  for (let { title, number, reactions } of issueOrPrs) {
     for (let reaction in reactions) {
       if (
         reaction == "total_count" ||
@@ -78,16 +81,22 @@ function calculateMetrics(issueOrPrs) {
 
     if (mostUpvotedCount < reactions["+1"]) {
       mostUpvotedCount = reactions["+1"];
-      mostUpvoted = issueOrPrs.title;
+      mostUpvoted = `[#${number}] ${title}`;
     }
   }
-
   return {
     mostUpvoted,
     mostUpvotedCount,
-    reactions: totalReactions,
+    reactions: Object.fromEntries(
+      Object.entries(totalReactions).sort(([a], [b]) => a.localeCompare(b))
+    ),
   };
 }
 
-getCompetitorAnalysis("react").then(console.table);
-getCompetitorAnalysis("vue").then(console.table);
+async function main() {
+  let { topIssueAndPr, ...analysis } = await getCompetitorAnalysis("vue");
+  console.table(analysis);
+  console.table(topIssueAndPr);
+}
+
+if (require.main) main();
