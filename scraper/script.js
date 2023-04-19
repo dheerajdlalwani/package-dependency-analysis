@@ -90,15 +90,7 @@ const scraper = async () => {
           method: "GET",
         });
 
-        // const response
-        // if (!response.status.toString().startsWith("2")) {
-        //   continue;
-        // }
-
         const text = await response.text();
-
-        // console.log(`The ${file_name} for repository ${item.full_name} is\n`);
-        // console.log(text);
 
         const repo_dir = path.resolve(
           __dirname,
@@ -115,12 +107,12 @@ const scraper = async () => {
       page_number++;
       // i--;
     }
+    console.log(`Number of repos for ${language} is ${number_of_repos}`);
     if (number_of_repos == 100) {
       page_number = 1;
       number_of_repos = 0;
       i++;
     }
-    console.log(`Number of repos for ${language} is ${number_of_repos}`);
   }
 };
 

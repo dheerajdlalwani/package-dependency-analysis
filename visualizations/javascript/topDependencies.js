@@ -34,10 +34,10 @@ for (let tuple of adjacencyList) {
     .set("inDegree", degreeCount.get(packages[1]).get("inDegree") + 1);
 }
 
-let text = "";
+let text = "x,y\n";
 
 for (let [key, value] of degreeCount) {
-  text += `${value.get("inDegree")},${key}\n`;
+  text += `${key},${value.get("inDegree")}\n`;
 }
 
 fs.writeFileSync(path.join(baseDir, "inDegree.csv"), text);
